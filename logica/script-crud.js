@@ -4,8 +4,16 @@ const btnAdicionarTarefa = document.querySelector('.app__button--add-task')
 const formAdicionarTarefa = document.querySelector('.app__form-add-task')
 const textarea = document.querySelector('.app__form-textarea')
 const ulTarefa = document.querySelector('.app__section-task-list')
+const btnCancelar = document.querySelector('.app__form-footer__button--cancel')
+const paragrafoDescricaoTarefa = document.querySelector('.app__section-active-task-description')
 
-const tarefas = JSON.parse(localStorage.getItem('tarefas')) || []
+const btnRemoverConcluidas = document.querySelector('#btn-remover-concluidas')
+const btnRemoverTodas = document.querySelector('#btn-remover-todas')
+
+
+let tarefas = JSON.parse(localStorage.getItem('tarefas')) || []
+let tarefaSelecionada = null
+let litarefaSelecionada = null
 
 function atualizarTarefas() {
     localStorage.setItem('tarefas', JSON.stringify(tarefas))
@@ -34,9 +42,9 @@ function criarElementoTarefa(tarefa) {
     botao.classList.add('app_button-edit')
 
     botao.onclick = () => {
-        debugger
+        //debugger
         const novaDescricao = prompt("Qual é o novo nome da tarefa?")
-        console.log('Nova descrição da tarefa: ', novaDescricao)
+        // console.log('Nova descrição da tarefa: ', novaDescricao)
         if (novaDescricao) {
             paragrafo.textContent = novaDescricao
             tarefa.descricao = novaDescricao
@@ -52,6 +60,31 @@ function criarElementoTarefa(tarefa) {
     li.append(svg)
     li.append(paragrafo)
     li.append(botao)
+
+    if (tarefa.completa) {
+        li.classList.add('app__section-task-list-item-complete')
+        botao.setAttribute('disabled', 'disabled')
+    } else {
+        li.onclick = () => {
+            document.querySelectorAll('.app__section-task-list-item-active')
+                .forEach(elemento => {
+                    elemento.classList.remove('app__section-task-list-item-active')
+                })
+
+            if (tarefaSelecionada == tarefa) {
+                paragrafoDescricaoTarefa.textContent = ''
+                tarefaSelecionada = null
+                liTarefaSelecionada = null
+                return
+            }
+            tarefaSelecionada = tarefa
+            liTarefaSelecionada = li
+            paragrafoDescricaoTarefa.textContent = tarefa.descricao
+
+            li.classList.add('app__section-task-list-item-active')
+        }
+
+    }
 
     return li
 }
@@ -77,6 +110,42 @@ tarefas.forEach(tarefa => {
     const elementoTarefa = criarElementoTarefa(tarefa)
     ulTarefa.append(elementoTarefa)
 });
+
+btnCancelar.addEventListener('click', () => {
+    textarea.value = ''
+    formAdicionarTarefa.classList.add('hidden')
+})
+
+document.addEventListener('FocoFinalizado', () => {
+    if (tarefaSelecionada && liTarefaSelecionada) {
+        liTarefaSelecionada.classList.remove('app__section-task-list-item-active')
+        liTarefaSelecionada.classList.add('app__section-task-list-item-complete')
+        liTarefaSelecionada.querySelector('button').setAttribute('disabled', 'disabled')
+        tarefaSelecionada.completa = true
+        atualizarTarefas()
+    }
+})
+
+btnRemoverConcluidas.onclick = () => {
+    const seletor = ".app__section-task-list-item-complete"
+    document.querySelectorAll(seletor).forEach(elemento => {
+        elemento.remove()
+    })
+    tarefas = tarefas.filter(tarefa => !tarefa.completa)
+    atualizarTarefas()
+}
+
+btnRemoverTodas.onclick = () => {
+   const selecionadas = ".app__section-task-list-item"
+   document.querySelectorAll(selecionadas).forEach(elemento => {
+    elemento.remove()
+   })
+   tarefas = tarefas.filter(tarefa => !tarefa)
+    atualizarTarefas()
+}
+
+
+
 
 
 
