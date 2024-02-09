@@ -9,6 +9,7 @@ const paragrafoDescricaoTarefa = document.querySelector('.app__section-active-ta
 
 const btnRemoverConcluidas = document.querySelector('#btn-remover-concluidas')
 const btnRemoverTodas = document.querySelector('#btn-remover-todas')
+const btnFinalizarTarefa = document.querySelector('#btn-finalizar-tarefa')
 
 
 let tarefas = JSON.parse(localStorage.getItem('tarefas')) || []
@@ -136,13 +137,24 @@ btnRemoverConcluidas.onclick = () => {
 }
 
 btnRemoverTodas.onclick = () => {
-   const selecionadas = ".app__section-task-list-item"
-   document.querySelectorAll(selecionadas).forEach(elemento => {
-    elemento.remove()
-   })
-   tarefas = tarefas.filter(tarefa => !tarefa)
+    const selecionadas = ".app__section-task-list-item"
+    document.querySelectorAll(selecionadas).forEach(elemento => {
+        elemento.remove()
+    })
+    tarefas = tarefas.filter(tarefa => !tarefa)
     atualizarTarefas()
 }
+
+btnFinalizarTarefa.addEventListener('click', () => {
+    if (tarefaSelecionada && liTarefaSelecionada) {
+        liTarefaSelecionada.classList.remove('app__section-task-list-item-active')
+        liTarefaSelecionada.classList.add('app__section-task-list-item-complete')
+        liTarefaSelecionada.querySelector('button').setAttribute('disabled', 'disabled')
+        tarefaSelecionada.completa = true
+        atualizarTarefas()
+    }
+})
+
 
 
 

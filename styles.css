@@ -141,11 +141,11 @@ h1, h2, h3, h4, h5, h6 {
 .app__card-primary-button-wrapper {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .app__card-primary-button {
-    padding: 0.8rem;
+    padding: 1rem;
     width: 12rem;
     color: var(--color-secondary);
     border: none;
@@ -159,6 +159,28 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     justify-content: center;
     gap: 1rem;
+}
+
+.app__card-second-button {
+    padding: 1rem;
+    width: 17rem;
+    color: var(--color-secondary);
+    border: none;
+    cursor: pointer;
+    outline: inherit;
+    border-radius: 3.2rem;
+    background: var(--linear-botes);
+    margin-top: 3.2rem;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+}
+
+.app__card-second-butto-icon {
+    width: 2.2rem;
+    height: 2.5rem;
 }
 
 .app__footer {
@@ -312,6 +334,7 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding-bottom: 5rem;
 }
 
 .app__section-task-content {
@@ -324,7 +347,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 6rem;
+    gap: 2rem;
     padding: 4rem 0;
     border-bottom: 1px solid #144480;
     margin-bottom: 4rem;
@@ -342,10 +365,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .app__section-active-task-description {
     font-family: Montserrat;
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-style: normal;
-    font-weight: 600;
-    line-height: 150%;
+    font-weight: 400;
+    line-height: 120%;
 }
 
 .app__section-tasks-heading {
@@ -372,9 +395,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .app__section-active-task-label {
     font-family: Montserrat;
-    font-size: 1.25rem;
+    font-size: 2.8rem;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 150%;
 }
 
@@ -387,7 +410,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
     border-radius: 0.8rem;
     background: var(--fundo-card);
     margin-bottom: 0.8rem;
