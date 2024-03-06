@@ -47,6 +47,7 @@ longoBt.addEventListener('click', () => {
     longoBt.classList.add('active')
 })
 
+
 function alterarContexto(contexto) {
     mostrarTempo()
     botoes.forEach(function (contexto){
@@ -59,21 +60,23 @@ function alterarContexto(contexto) {
             titulo.innerHTML = `
             Otimize sua produtividade,<br>
                 <strong class="app__title-strong">mergulhe no que importa.</strong>
-            `
+            `;
             break;
         case "descanso-curto":
             titulo.innerHTML = `
             Que tal dar uma respirada? <strong class="app__title-strong">Faça uma pausa curta!</strong>
-            ` 
+            `;
             break;
         case "descanso-longo":
             titulo.innerHTML = `
             Hora de voltar à superfície.<strong class="app__title-strong"> Faça uma pausa longa.</strong>
-            `
+            `;
+            break; 
         default:
             break;
     }
 }
+
 
 const contagemRegressiva = () => {
     if(tempoDecorridoEmSegundos <= 0){
