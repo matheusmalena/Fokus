@@ -145,8 +145,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .app__card-primary-button {
-    padding: 1rem;
-    width: 12rem;
+    padding: 1.5rem;
+    width: 13rem;
     color: var(--color-secondary);
     border: none;
     cursor: pointer;
@@ -154,8 +154,9 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 3.2rem;
     background: var(--linear-botes);
     margin-top: 3.2rem;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     display: flex;
+    font-family: Unbounded;
     align-items: center;
     justify-content: center;
     gap: 1rem;
@@ -163,9 +164,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .app__card-second-button {
     padding: 1rem;
-    width: 17rem;
+    width: 15rem;
     color: var(--color-secondary);
     border: none;
+    font-family: Unbounded;
     cursor: pointer;
     outline: inherit;
     border-radius: 3.2rem;
@@ -175,7 +177,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.6rem;
+    gap: 0.5rem;
 }
 
 .app__card-second-butto-icon {
@@ -290,6 +292,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: transparent;
     display: flex;
     align-items: center;
+    font-family: Unbounded;
     justify-content: flex-start;
     color: #fff;
     gap: 0.8rem;
@@ -518,6 +521,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: Unbounded;
     gap: 1rem;
     color: var(--lils);
     border-radius: 3.2rem;
