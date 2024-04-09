@@ -17,7 +17,7 @@ const audioPlay = new Audio('/sons/play.wav');
 const audioPausa = new Audio('/sons/pause.mp3');
 const audioTempoFinalizado = new Audio('./sons/beep.mp3')
 
-let tempoDecorridoEmSegundos = 10
+let tempoDecorridoEmSegundos = 0
 let intervaloId = null
 
 musica.loop = true
@@ -31,7 +31,7 @@ musicaFocoInput.addEventListener('change', () => {
 })
 
 focoBt.addEventListener('click', () => {
-    tempoDecorridoEmSegundos = 10
+    tempoDecorridoEmSegundos = 0
     alterarContexto('foco')
     focoBt.classList.add('active')
 })
@@ -114,6 +114,16 @@ function contagemRegressiva() {
   }
   tempoDecorridoEmSegundos -= 1;
   mostrarTempo();
+}
+
+// Função para iniciar a contagem regressiva
+function iniciarContagemRegressiva() {
+    // Se já estiver contando, não faz nada
+    if (intervaloId) {
+        return;
+    }
+    // Inicia o intervalo que chama a função de contagem regressiva a cada segundo
+    intervaloId = setInterval(contagemRegressiva, 1000);
 }
 
 
