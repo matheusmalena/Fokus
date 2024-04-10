@@ -1,5 +1,3 @@
-//encontrar o botao de tarefa
-
 const btnAdicionarTarefa = document.querySelector('.app__button--add-task')
 const formAdicionarTarefa = document.querySelector('.app__form-add-task')
 const textarea = document.querySelector('.app__form-textarea')
@@ -154,6 +152,14 @@ btnFinalizarTarefa.addEventListener('click', () => {
         atualizarTarefas()
     }
 })
+
+
+
+
+
+
+
+
 
 
 
