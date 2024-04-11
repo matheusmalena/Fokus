@@ -21,6 +21,8 @@ const audioTempoFinalizado = new Audio('./sons/beep.mp3')
 let tempoDecorridoEmSegundos = 0
 let intervaloId = null
 
+let tempoArmazenado = 0;
+
 musica.loop = true
 
 musicaFocoInput.addEventListener('change', () => {
@@ -116,8 +118,10 @@ function iniciarContagemProgressiva() {
 
 startPauseBt.addEventListener('click', () => {
   if (intervaloId) {
+    tempoArmazenado = tempoDecorridoEmSegundos;
     audioPausa.play();
     zerar();
+    console.log(tempoArmazenado)
     return;
   }
   audioPlay.play();
